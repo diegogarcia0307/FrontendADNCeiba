@@ -1,45 +1,46 @@
 <h2 style="text-align: center">Fomulario de ingreso</h2>
 <div>
     <mat-form-field class="fila">
-        <mat-select placeholder="Tipo vehículo">
-            <mat-option value="moto">MOTO</mat-option>
-            <mat-option value="carro">CARRO</mat-option>
+        <mat-select placeholder="Tipo vehículo" [(ngModel)]="vehiculo.tipo">
+            <mat-option value="MOTO">MOTO</mat-option>
+            <mat-option value="CARRO">CARRO</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
 
 <div>
     <mat-form-field class="fila">
-        <input matInput placeholder="Placa" required>
+        <input matInput placeholder="Placa" required [(ngModel)]="vehiculo.placa">
     </mat-form-field>
 </div>
 
 <div>
     <mat-form-field class="fila">
-        <input matInput placeholder="Marca">
+        <input matInput placeholder="Marca" [(ngModel)]="vehiculo.marca">
     </mat-form-field>
 </div>
 
 <div>
     <mat-form-field class="fila">
-        <input type="number" matInput placeholder="Cilindraje" required>
+        <input type="number" matInput placeholder="Cilindraje" required [(ngModel)]="vehiculo.cilindraje">
     </mat-form-field>
 </div>
 
 <div>
     <mat-form-field class="fila">
-        <input matInput placeholder="Color">
+        <input matInput placeholder="Color" [(ngModel)]="vehiculo.color">
     </mat-form-field>
 
 </div>
-
 <div mat-dialog-actions class="fila">
-    <button mat-raised-button color="primary" [mat-dialog-close]="data.animal" (cilck)="registrarVehiculo">Ingresar</button>
+    <button mat-raised-button color="primary" (click)="registrarVehiculo()">Ingresar</button>
 </div>
 <div mat-dialog-actions class="fila">
     <button mat-stroked-button color="warn" (click)="onNoClick()">Cancelar</button>
 </div>
 
+
 <!--
+    [mat-dialog-close]="data.animal"
     cdkFocusInitial
 -->

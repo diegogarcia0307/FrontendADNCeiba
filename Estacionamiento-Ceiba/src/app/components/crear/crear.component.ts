@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData } from 'src/app/modals/DialogData';
 import { Vehiculo } from 'src/app/class/vehiculo';
+import { ConexionBDService } from 'src/app/services/conexion-bd.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,18 +14,32 @@ import { Vehiculo } from 'src/app/class/vehiculo';
 })
 export class CrearComponent implements OnInit {
 
-  public vehiculo: Vehiculo;
+  public vehiculo = new Vehiculo('', '', '', '', 0);
+  public placa: string;
 
   constructor(
     public dialogRef: MatDialogRef<CrearComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private conexion: ConexionBDService,
+    private router: Router
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   registrarVehiculo() {
-
+    this.conexion.ingresarVehiculo(this.vehiculo).subscribe(
+      data => {
+        if (data == true)
+          Swal.fire('Vehículo registrado', 'El vehículo puede ingresar. Acceso autorizado!', 'success');
+        this.dialogRef.close();
+        this.router.navigate(['/dashboard/inicio']);
+      },
+      err => {
+        Swal.fire('Error al ingresar el vehículo', err.error.message, 'info');
+      }
+    );
   }
 
   ngOnInit() {

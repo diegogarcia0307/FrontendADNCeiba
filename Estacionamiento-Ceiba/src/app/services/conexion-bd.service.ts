@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Vehiculo } from '../class/vehiculo';
 
 
 export const URL = 'http://localhost:8080';
@@ -34,5 +35,10 @@ export class ConexionBDService {
     const url = `${URL}/alquiler/salida/${placa}`;
 
     return this.http.get<number>(url, { headers: this.header });
+  }
+
+  ingresarVehiculo(vehiculo: Vehiculo) {
+    const url = `${URL}/alquiler/crear/`;
+    return this.http.post(url, { vehiculo: vehiculo });
   }
 }
