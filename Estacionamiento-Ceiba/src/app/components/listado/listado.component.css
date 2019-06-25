@@ -16,3 +16,9 @@ table th {
     align-content: center !important;
     align-items: center !important;
 }
+
+.actualizar {
+    margin-top: 10px;
+    float: right;
+    margin-right: 3px;
+}

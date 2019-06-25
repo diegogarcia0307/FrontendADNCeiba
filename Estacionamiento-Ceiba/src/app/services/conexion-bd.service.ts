@@ -29,4 +29,10 @@ export class ConexionBDService {
     const url = `${URL}/alquiler/busqueda/${placa}`;
     return this.http.get<any>(url, { headers: this.header });
   }
+
+  darSalida(placa: String): Observable<number> {
+    const url = `${URL}/alquiler/salida/${placa}`;
+
+    return this.http.get<number>(url, { headers: this.header });
+  }
 }
