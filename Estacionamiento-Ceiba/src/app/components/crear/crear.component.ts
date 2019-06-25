@@ -34,7 +34,6 @@ export class CrearComponent implements OnInit {
         if (data == true)
           Swal.fire('Vehículo registrado', 'El vehículo puede ingresar. Acceso autorizado!', 'success');
         this.dialogRef.close();
-        this.router.navigate(['/dashboard/inicio']);
       },
       err => {
         Swal.fire('Error al ingresar el vehículo', err.error.message, 'info');

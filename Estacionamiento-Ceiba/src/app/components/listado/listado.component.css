@@ -22,3 +22,8 @@ table th {
     float: right;
     margin-right: 3px;
 }
+
+.filter {
+    margin: auto;
+    width: 99%;
+}

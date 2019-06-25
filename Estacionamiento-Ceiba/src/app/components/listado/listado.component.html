@@ -3,7 +3,15 @@
     <h2>Listado de vehículos ingresados</h2>
 
     <div class="mat-elevation-z8">
-        <button class="actualizar" mat-raised-button color="primary" (click)="cargarLista()">Actualizar</button>
+        <div>
+            <button class="actualizar" mat-raised-button color="primary" (click)="cargarLista()">Actualizar</button>
+        </div>
+
+        <div class="filter">
+            <mat-form-field class="filter">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
 
         <table mat-table [dataSource]="dataSource">
 
