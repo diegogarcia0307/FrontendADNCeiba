@@ -22,23 +22,23 @@ export class ConexionBDService {
   });
 
   obtenerLista(): Observable<any> {
-    const url = `${URL}/alquiler/listar/`;
+    const url = `${URL}/apiv1/alquileres/`;
     return this.http.get<any>(url, { headers: this.header });
   }
 
   obtenerAlquiler(placa: String): Observable<any> {
-    const url = `${URL}/alquiler/busqueda/${placa}`;
+    const url = `${URL}/apiv1/alquileres/${placa}`;
     return this.http.get<any>(url, { headers: this.header });
   }
 
   darSalida(placa: String): Observable<number> {
-    const url = `${URL}/alquiler/salida/${placa}`;
+    const url = `${URL}/apiv1/alquileres/${placa}`;
 
-    return this.http.get<number>(url, { headers: this.header });
+    return this.http.put<number>(url, { headers: this.header });
   }
 
   ingresarVehiculo(vehiculo: Vehiculo) {
-    const url = `${URL}/alquiler/crear/`;
+    const url = `${URL}/apiv1/alquileres/`;
     return this.http.post(url, { vehiculo: vehiculo });
   }
 }

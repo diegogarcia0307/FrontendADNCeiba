@@ -31,9 +31,10 @@ export class CrearComponent implements OnInit {
   registrarVehiculo() {
     this.conexion.ingresarVehiculo(this.vehiculo).subscribe(
       data => {
-        if (data == true)
+        if (data['estadoOperacion']) {
+          this.dialogRef.close();
           Swal.fire('Vehículo registrado', 'El vehículo puede ingresar. Acceso autorizado!', 'success');
-        this.dialogRef.close();
+        }
       },
       err => {
         Swal.fire('Error al ingresar el vehículo', err.error.message, 'info');
