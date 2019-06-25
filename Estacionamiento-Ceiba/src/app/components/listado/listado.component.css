@@ -1,0 +1,18 @@
+table {
+    width: 98%;
+    margin: auto;
+}
+
+.container {
+    margin: auto;
+    margin-top: 3%;
+    width: 80%;
+    height: 80%;
+}
+
+table td,
+table th {
+    text-align: center !important;
+    align-content: center !important;
+    align-items: center !important;
+}
