@@ -54,8 +54,9 @@ export class ListadoComponent implements OnInit {
 
     if (info.length > 0) {
       info.forEach(element => {
+        let tipo = element.vehiculo.tipo == 1 ? 'CARRO' : 'MOTO';
         this.data.push({
-          'tipo': element.vehiculo.tipo,
+          'tipo': tipo,
           'placa': element.vehiculo.placa,
           'fecha': element.fechaIngreso,
           'boton': 'Dar salida'
@@ -87,7 +88,7 @@ export class ListadoComponent implements OnInit {
       if (result.value) {
         this.conexion.darSalida(placa).subscribe(
           data => {
-            Swal.fire("Valor a pagar: $" + data, 'Placa del vehículo: ' + placa, "success").then((result) => {
+            Swal.fire("Valor a pagar: $" + data['pago'], 'Placa del vehículo: ' + placa, "success").then((result) => {
               this.cargarLista()
             }
             );
